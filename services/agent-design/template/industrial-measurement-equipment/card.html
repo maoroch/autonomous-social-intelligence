@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Testo carousel card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&family=Manrope:wght@600;700;800;900&subset=cyrillic,cyrillic-ext&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --testo-accent: {{ACCENT_COLOR}};
+      --testo-ink: {{INK_COLOR}};
+      --testo-paper: {{PAPER_COLOR}};
+      --testo-steel: #334155;
+      --testo-line: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #e9e9e9;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .stage {
+      min-height: 1350px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+    }
+
+    .post {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      background-color: var(--testo-paper);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 110px 90px 80px;
+    }
+
+    /* Top Badge & Chip Row above headline */
+    .badge-row {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      background: #FFF4E6;
+      border: 2px solid #FF7900;
+      border-radius: 999px;
+      color: #D94800;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(255, 121, 0, 0.12);
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FF7900;
+    }
+
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 22px;
+      background: #0F172A;
+      color: #FFFFFF;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 32px 0;
+      max-width: 900px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.18;
+      color: var(--testo-ink);
+      letter-spacing: -0.025em;
+    }
+
+    .body-text {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 900px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.45;
+      color: var(--testo-steel);
+    }
+
+    .body-text p {
+      margin: 0 0 16px 0;
+      padding: 18px 24px;
+      background: #F8FAFC;
+      border-radius: 18px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .illustration-container {
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .illustration-container img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    }
+
+    .illustration-container svg {
+      height: 100%;
+      width: auto;
+    }
+
+    .spacer {
+      flex: 1 1 auto;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 2px solid var(--testo-line);
+      padding-top: 24px;
+      margin-top: 20px;
+    }
+
+    .footer span {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      font-size: 24px;
+      color: #0F172A;
+      line-height: 1;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+
+    .footer-brand img {
+      height: 52px;
+      max-height: 52px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stage">
+    <div class="post">
+      <!-- Top Badge & Chip Row above headline -->
+      <div class="badge-row">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>{{BADGE}}</span>
+        </div>
+      </div>
+
+      <h1 class="headline">{{TITLE}}</h1>
+
+      <div class="body-text">{{BODY_HTML}}</div>
+
+      <div class="spacer"></div>
+
+      <div class="illustration-container" style="{{ILLUSTRATION_STYLE}}">
+        {{ILLUSTRATION}}
+      </div>
+
+      <div class="footer">
+        <div class="footer-brand">
+          <img src="https://azia-test.com/wp-content/uploads/2025/02/logo.svg" alt="Azia Test" style="height: 52px; max-height: 52px; width: auto; display: block; object-fit: contain;" />
+        </div>
+        <span>{{PAGE_TEXT}}</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
